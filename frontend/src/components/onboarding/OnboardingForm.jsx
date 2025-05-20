@@ -1,4 +1,6 @@
+// First, we'll integrate the RoleContext with the OnboardingForm component
 
+// OnboardingForm.jsx with role-based form selection
 import React, { useState } from "react";
 import { X } from "lucide-react";
 import { Welcome } from "./FormSteps/Welcome";
@@ -8,10 +10,15 @@ import { StepThree } from "./FormSteps/StepThree";
 import { StepFour } from "./FormSteps/StepFour";
 import { StepFive } from "./FormSteps/StepFive";
 import { Confirmation } from "./FormSteps/Confirmation";
+import { FresherStepThree } from "./FormSteps/FresherStepThree";
+import { FresherStepFour } from "./FormSteps/FresherStepFour";
+import { useRole } from "../../context/RoleContext/RoleContext.jsx";
+
 
 export const OnboardingForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({});
+  const { selectedRole, setSelectedRole } = useRole();
 
   const handleNext = () => {
     setCurrentStep((prev) => prev + 1);
@@ -29,6 +36,7 @@ export const OnboardingForm = () => {
     ) {
       setCurrentStep(0);
       setFormData({});
+      setSelectedRole(null);
     }
   };
 
@@ -37,6 +45,11 @@ export const OnboardingForm = () => {
     alert("Form submitted successfully!");
     setCurrentStep(0);
     setFormData({});
+    setSelectedRole(null);
+  };
+
+  const handleProfileTypeSelection = (profileType) => {
+    setSelectedRole(profileType);
   };
 
   const renderStep = () => {
@@ -46,11 +59,25 @@ export const OnboardingForm = () => {
       case 1:
         return <StepOne onNext={handleNext} onCancel={handleCancel} />;
       case 2:
-        return <StepTwo onNext={handleNext} onCancel={handleBack} />;
+        return <StepTwo 
+          onNext={handleNext} 
+          onCancel={handleBack} 
+          onProfileTypeSelect={handleProfileTypeSelection}
+        />;
       case 3:
-        return <StepThree onNext={handleNext} onBack={handleBack} onCancel={handleCancel} />;
+        // Choose between student and fresher form for step 3
+        return selectedRole === "fresher" ? (
+          <FresherStepThree onNext={handleNext} onBack={handleBack} onCancel={handleCancel} />
+        ) : (
+          <StepThree onNext={handleNext} onBack={handleBack} onCancel={handleCancel} />
+        );
       case 4:
-        return <StepFour onNext={handleNext} onBack={handleBack} />;
+        // Choose between student and fresher form for step 4
+        return selectedRole === "fresher" ? (
+          <FresherStepFour onNext={handleNext} onBack={handleBack} />
+        ) : (
+          <StepFour onNext={handleNext} onBack={handleBack} />
+        );
       case 5:
         return <StepFive onNext={handleNext} onBack={handleBack} />;
       case 6:

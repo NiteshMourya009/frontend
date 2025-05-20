@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ProgressIndicator } from "../ProgressIndicator";
 import { MailIcon, PhoneIcon, ChevronDownIcon } from "lucide-react";
 
-export const StepTwo = ({ onNext, onCancel }) => {
+export const StepTwo = ({ onNext, onCancel, onProfileTypeSelect }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "hello@xyz.com",
@@ -16,7 +16,20 @@ export const StepTwo = ({ onNext, onCancel }) => {
   };
 
   const handleProfileTypeChange = (e) => {
-    setFormData((prev) => ({ ...prev, profileType: e.target.value }));
+    const selectedProfileType = e.target.value;
+    setFormData((prev) => ({ ...prev, profileType: selectedProfileType }));
+    // Call the parent function to update the selected role in context
+    if (onProfileTypeSelect) {
+      onProfileTypeSelect(selectedProfileType);
+    }
+  };
+
+  const handleNextClick = () => {
+    // Ensure profile type is set in context before proceeding
+    if (onProfileTypeSelect && formData.profileType) {
+      onProfileTypeSelect(formData.profileType);
+    }
+    onNext();
   };
 
   return (
@@ -128,7 +141,7 @@ export const StepTwo = ({ onNext, onCancel }) => {
               </button>
               <button
                 type="button"
-                onClick={onNext}
+                onClick={handleNextClick}
                 className="self-stretch bg-black gap-2 text-white px-6 py-3 max-md:px-5 cursor-pointer"
               >
                 Next

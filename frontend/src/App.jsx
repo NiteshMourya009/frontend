@@ -146,7 +146,25 @@ import PoolCampusEmployeeDash from "./pages/Company/EmployerDashboard/PoolCampus
 // import ProfessionalOffcampusStatus from "./components/Professional/ApplicationStatus/OffCampusListing/OffcampusStatus";
 // import ProfessionalJobTracker from "./components/Professional/ApplicationStatus/JobListings/JobTracker";
 // import ProfessionalHackthonStatus from "./components/Professional/ApplicationStatus/Hackthon/HackthonStatus";
-// import ProfAIDrivenJob from "./components/Professional/AIDrivenJobSearch/AIDrivenJob";
+// import ProfAIDrivenJob from "./components/Professional/AIDrivenJobSearch/AIDrivenJob"
+import  Fresher_CareerCraft from "./pages/Fresher/Service_request/CareerCraft";
+import Fresher_MockInterview from "./pages/Fresher/Service_request/Mock_Interview";
+import Fresher_Counselling from "./pages/Fresher/Service_request/Counselling";
+import FresherDashboard from "./pages/Fresher/Dashboard";
+import Fresher_Profile from "./pages/Fresher/Profile";
+import FJobListings from "./pages/Fresher/FresherDashboard/JobListing/JobListings";
+import FJobDetails from "./pages/Fresher/FresherDashboard/JobListing/JobDetails";
+import FInternJobListings from "./pages/Fresher/FresherDashboard/InternshipOpportunity/InternJobListing";
+import FInternJobDetails from "./pages/Fresher/FresherDashboard/InternshipOpportunity/InternJobDetails";
+import FOffCampusJobDetail from "./pages/Fresher/FresherDashboard/OffCampusListing/OffCampusJobDetail";
+import FOffCampusJobListings from "./pages/Fresher/FresherDashboard/OffCampusListing/offCampusJobListing";
+import FresherHackathon from "./pages/Fresher/FresherDashboard/Hackathon/Hackthon";
+import FresherDetail from "./pages/Fresher/FresherDashboard/Hackathon/Detail";
+import ManageReferralJobs from "./pages/Professional/ServiceRequest/ManageReferralJobs";
+import RefPostingPage from "./pages/Professional/ServiceRequest/refpostingpage";
+import PostReferralJobPage from "./pages/Professional/ServiceRequest/postreferral";
+import TotalApplicantsPage from "./pages/Professional/ServiceRequest/TotalApplicantsPage";
+import OffCampusApplicant from "./pages/Professional/ServiceRequest/OffcampusApplicant";
 
 // Create query client
 const queryClient = new QueryClient();
@@ -235,8 +253,38 @@ function AppRoutes() {
               <Route path="settings" element={<Settings />} />
               <Route path="ContactUs" element={<ContactUs/>} />
               <Route path="*" element={<NotFound />} />
+                {/* Fresher */}
+              <Route path="/home" element={<FresherDashboard />} />
+              <Route path="/profile" element={<Fresher_Profile />} />
+              <Route path="/fresher-dashboard/job-listing" element={<FJobListings />} />
+              <Route path="/fresher-dashboard/job-listing/:jobId" element={<FJobDetails />} />
+              <Route path="/fresher-dashboard/internship-opportunities" element={<FInternJobListings />} />
+              <Route path="/fresher-dashboard/internship-opportunities/:jobId" element={<FInternJobDetails />} />
+              <Route path="/fresher-dashboard/off-campus-listings" element={<FOffCampusJobListings />} />
+              <Route path="/fresher-dashboard/off-campus-listings/:jobId" element={<FOffCampusJobDetail/>} />
+              <Route path="/fresher-dashboard/hackathon" element={<FresherHackathon/>} />
+              <Route path="/fresher-dashboard/hackathon/:id" element={<FresherDetail />} />
+              {/* service request  */}
+              <Route path ='fresher/service-request/career-craft' element={<Fresher_CareerCraft/>}/>
+              <Route path ='fresher/service-request/mock-interview' element={<Fresher_MockInterview/>}/>
+              <Route path ='fresher/service-request/counselling' element={<Fresher_Counselling/>}/>
+              {/* Application status  */}
+              {/* <Route path="fresher/application-status/job-listing" element={<JobTracker/>} />
+              <Route path="/application-status/off-campus-listing" element={<OffcampusStatus/>} />
+              <Route path="/application-status/internship-opportunities" element={<InternshipStatus/>} />
+              <Route path="/application-status/referral-jobs" element={<RefferralJobStatus/>} />
+              <Route path="/application-status/hackathon" element={<HackthonStatus/>} /> */}
 
 
+              {/* proffesional routes */}
+              <Route path ='professional/service-request' element={<RefPostingPage/>}/>
+              <Route path ='professional/service-request/post' element={<PostReferralJobPage/>}/>
+              <Route path ='professional/service-request/referral' element={<ManageReferralJobs/>}/>
+              <Route path ='professional/service-request/totalapplicants' element={<TotalApplicantsPage/>}/>
+              <Route path ='professional/service-request/applicant' element={<OffCampusApplicant/>}/>
+              
+              
+              
               {/* Company  */}
               <Route path="home" element={<Dashboard />} />
               <Route path="/company-profile" element={<CompanyProfile />}/> 
