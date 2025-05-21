@@ -260,8 +260,8 @@ function AppRoutes() {
               <Route path="ContactUs" element={<ContactUs/>} />
               <Route path="*" element={<NotFound />} />
                 {/* Fresher */}
-              <Route path="/home" element={<FresherDashboard />} />
-              <Route path="/profile" element={<Fresher_Profile />} />
+              <Route path="/fresherhome" element={<FresherDashboard />} />
+              <Route path="/fresherprofile" element={<Fresher_Profile />} />
               <Route path="/fresher-dashboard/job-listing" element={<FJobListings />} />
               <Route path="/fresher-dashboard/job-listing/:jobId" element={<FJobDetails />} />
               <Route path="/fresher-dashboard/internship-opportunities" element={<FInternJobListings />} />
@@ -284,7 +284,7 @@ function AppRoutes() {
 
               {/* proffesional routes */}
               <Route path="/profhome" element={<ProfDashboard/>} />
-              <Route path="/profile" element={<ProfProfile />} />
+              <Route path="/profprofile" element={<ProfProfile />} />
               <Route path="/professional-dashboard/job-listing" element={<ProfessionalJobListings />} />
               <Route path="/professional-dashboard/job-listing/:jobId" element={<ProfessionalJobDetails />} />
               <Route path="/professional-dashboard/hackathon" element={<ProfessionalHackathon/>} />

@@ -7,8 +7,8 @@ function FresherSidebar({ activePath }) {
   return (
     <div>
       {/* Student Sidebar */}
-      <SidebarNavItem to="/home" icon={<FiHome />} label="Home" active={activePath === '/home'} />
-      <SidebarNavItem to="/profile" icon={<FiUser />} label="Profile" active={activePath === '/profile'} />
+      <SidebarNavItem to="/fresherhome" icon={<FiHome />} label="Home" active={activePath === '/home'} />
+      <SidebarNavItem to="/fresherprofile" icon={<FiUser />} label="Profile" active={activePath === '/profile'} />
       <SidebarNavItem to="/saved-jobs" icon={<FiBookmark />} label="Saved Jobs/Internships" active={activePath === '/saved-jobs'} />
 
       <SidebarNavGroup label="Fresher Dashboard" icon={<FiPieChart />} active={activePath.includes('/fresher-dashboard')}>

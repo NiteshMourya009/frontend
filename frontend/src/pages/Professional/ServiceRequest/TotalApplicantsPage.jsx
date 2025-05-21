@@ -111,7 +111,7 @@ function TotalApplicantsPage() {
 
   const handleViewApplicantDetails = (applicantId) => {
     // Navigate to the off-campus applicant page
-    navigate('/professional/service-request/applicant');
+    navigate(`/professional/service-request/applicant?applicantid=${applicantId}`);
   };
 
   return (

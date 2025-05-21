@@ -7,7 +7,7 @@ function ProfessionalSidebar({ activePath }) {
     <div>
       {/* Professional Sidebar */}
       <SidebarNavItem to="/profhome" icon={<FiHome />} label="Home" active={activePath === '/profhome'} />
-      <SidebarNavItem to="/profile" icon={<FiUser />} label="Profile" active={activePath === '/profile'} />
+      <SidebarNavItem to="/profprofile" icon={<FiUser />} label="Profile" active={activePath === '/profile'} />
       <SidebarNavItem to="/saved-jobs" icon={<FiBookmark />} label="Saved Jobs/Internships" active={activePath === '/saved-jobs'} />
 
       <SidebarNavGroup label="Professional Dashboard" icon={<FiPieChart />} active={activePath.includes('/professional-dashboard')}>

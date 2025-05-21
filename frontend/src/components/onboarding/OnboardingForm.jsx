@@ -10,6 +10,7 @@ import { StepFive } from "./FormSteps/StepFive";
 import { Confirmation } from "./FormSteps/Confirmation";
 import { FresherStepThree } from "./FormSteps/FresherStepThree";
 import { FresherStepFour } from "./FormSteps/FresherStepFour";
+import { ProfessionalStepFour } from "./FormSteps/ProfessionalStepFour";
 import { useRole } from "@/context/RoleContext/RoleContext";
 
 export const OnboardingForm = () => {
@@ -66,9 +67,9 @@ export const OnboardingForm = () => {
     updateFormData(newData);
   };
 
-  // Helper function to determine if professional forms should be used
+  // Helper function to determine if professional or fresher forms should be used
   const shouldUseProfessionalForms = () => {
-    return selectedRole === "fresher" || selectedRole === "professional";
+    return selectedRole === "professional" || selectedRole === "fresher";
   };
 
   const renderStep = () => {
@@ -111,22 +112,35 @@ export const OnboardingForm = () => {
           />
         );
       case 4:
-        // Choose between student and professional forms for step 4
-        return shouldUseProfessionalForms() ? (
-          <FresherStepFour 
-            onNext={handleNext} 
-            onBack={handleBack}
-            formData={formData}
-            onChange={handleFormDataChange}
-          />
-        ) : (
-          <StepFour 
-            onNext={handleNext} 
-            onBack={handleBack}
-            formData={formData}
-            onChange={handleFormDataChange}
-          />
-        );
+        // Choose between different form steps based on role
+        if (selectedRole === "professional") {
+          return (
+            <ProfessionalStepFour 
+              onNext={handleNext} 
+              onBack={handleBack}
+              formData={formData}
+              onChange={handleFormDataChange}
+            />
+          );
+        } else if (selectedRole === "fresher") {
+          return (
+            <FresherStepFour 
+              onNext={handleNext} 
+              onBack={handleBack}
+              formData={formData}
+              onChange={handleFormDataChange}
+            />
+          );
+        } else {
+          return (
+            <StepFour 
+              onNext={handleNext} 
+              onBack={handleBack}
+              formData={formData}
+              onChange={handleFormDataChange}
+            />
+          );
+        }
       case 5:
         return <StepFive 
           onNext={handleNext} 

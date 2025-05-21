@@ -144,8 +144,13 @@ function ManageReferralJobs() {
   }
 
   const handleViewApplication = (jobId) => {
-    // Navigate to the total applicants page
-    navigate('/professional/service-request/totalapplicants')
+    // Navigate to the total applicants page for a specific job
+    navigate(`/professional/service-request/totalapplicants?jobId=${jobId}`)
+  }
+  
+  const handleViewJobDetails = (jobId) => {
+    // Navigate to the off-campus applicant page with job ID
+    navigate(`/professional/service-request/totalapplicants?jobId=${jobId}`)
   }
 
   const handlePostJob = () => {
@@ -301,7 +306,7 @@ function ManageReferralJobs() {
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {paginatedJobs.map((job) => (
-                <tr key={job.id}>
+                <tr key={job.id} className="cursor-pointer hover:bg-gray-50" onClick={() => handleViewJobDetails(job.id)}>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm font-medium text-gray-900">{job.title}</div>
                     <div className="text-sm text-gray-500">{job.location}</div>
@@ -322,7 +327,10 @@ function ManageReferralJobs() {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     <button
                       className="text-blue-600 hover:text-blue-800 hover:underline"
-                      onClick={() => handleViewApplication(job.id)}
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent row click event
+                        handleViewApplication(job.id);
+                      }}
                     >
                       {job.applications}
                     </button>
@@ -331,20 +339,43 @@ function ManageReferralJobs() {
                     <div className="flex space-x-2">
                       <button 
                         className="text-gray-500 hover:text-gray-700"
-                        onClick={() => handleViewApplication(job.id)}
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent row click event
+                          handleViewJobDetails(job.id);
+                        }}
                       >
                         <FiEye size={18} />
                       </button>
-                      <button className="text-gray-500 hover:text-gray-700">
+                      <button 
+                        className="text-gray-500 hover:text-gray-700"
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent row click event
+                        }}
+                      >
                         <FiEdit size={18} />
                       </button>
-                      <button className="text-gray-500 hover:text-gray-700">
+                      <button 
+                        className="text-gray-500 hover:text-gray-700"
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent row click event
+                        }}
+                      >
                         <FiTrash2 size={18} />
                       </button>
-                      <button className="text-gray-500 hover:text-gray-700">
+                      <button 
+                        className="text-gray-500 hover:text-gray-700"
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent row click event
+                        }}
+                      >
                         <FiDownload size={18} />
                       </button>
-                      <button className="text-gray-500 hover:text-gray-700">
+                      <button 
+                        className="text-gray-500 hover:text-gray-700"
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent row click event
+                        }}
+                      >
                         <FiShare2 size={18} />
                       </button>
                     </div>
