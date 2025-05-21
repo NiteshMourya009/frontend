@@ -2,7 +2,7 @@ import PageHeader from '@/components/dashboard/PageHeader'
 import Button from '@/components/ui/Button'
 import { FiPlus } from 'react-icons/fi'
 
-function Dashboard() {
+function ProfDashboard() {
   return (
     <div>
       <PageHeader 
@@ -50,4 +50,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+export default ProfDashboard

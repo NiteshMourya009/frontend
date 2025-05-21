@@ -1,6 +1,6 @@
 import PageHeader from "@/components/dashboard/PageHeader"
 
-function ApplicationStatus() {
+function ProfApplicationStatus() {
   return (
     <div>
       <PageHeader 
@@ -19,4 +19,4 @@ function ApplicationStatus() {
   )
 }
 
-export default ApplicationStatus
+export default ProfApplicationStatus

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
  import { fetchJobDetails, fetchSimilarJobs} from '../../../../constants/JobListing'
 import JobCard from '@/components/Student/StudentDashboard/JobListing/JobCard';
 
-const JobDetails = () => {
+const ProfessionalJobDetails = () => {
   const { jobId } = useParams();
   const navigate = useNavigate();
   const [jobDetails, setJobDetails] = useState(null);
@@ -77,7 +77,7 @@ const JobDetails = () => {
           <p className="text-xl font-semibold">{error || "Job not found"}</p>
           <button 
             className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-            onClick={() => navigate('/student-dashboard/job-listing')}
+            onClick={() => navigate('/professional-dashboard/job-listing')}
           >
             Back to Job Listings
           </button>
@@ -249,4 +249,4 @@ const JobDetails = () => {
   );
 };
 
-export default JobDetails;
+export default ProfessionalJobDetails;

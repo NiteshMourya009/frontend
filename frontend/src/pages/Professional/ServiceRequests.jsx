@@ -1,6 +1,6 @@
 import PageHeader from "@/components/dashboard/PageHeader"
 
-function ServiceRequests() {
+function ProfServiceRequests() {
   return (
     <div>
       <PageHeader 
@@ -18,4 +18,4 @@ function ServiceRequests() {
   )
 }
 
-export default ServiceRequests
+export default ProfServiceRequests

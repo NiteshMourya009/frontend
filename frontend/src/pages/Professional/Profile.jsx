@@ -5,7 +5,7 @@ import Avatar from '@/components/ui/Avatar'
 import Badge from '@/components/ui/Badge'
 import { FiLinkedin, FiGithub, FiGlobe, FiPlus } from 'react-icons/fi'
 
-function Profile() {
+function ProfProfile() {
   const [activeTab, setActiveTab] = useState('overview')
   const [switchToPro, setSwitchToPro] = useState(false)
   const [workExperiences, setWorkExperiences] = useState([{
@@ -614,4 +614,4 @@ function Profile() {
   )
 }
 
-export default Profile
+export default ProfProfile

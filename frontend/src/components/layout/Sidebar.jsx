@@ -118,10 +118,13 @@ import CompanySidebar from './CompanySidebar'
 import CollegeSidebar from './CollegeSidebar'
 import StudentSidebar from './StudentSidebar' // You can create a similar one for students
 import Logo from '../ui/Logo'
+import FresherSidebar from './FresherSidebar'
+import ProfessionalSidebar from './ProfessionalSidebar'
 
 function Sidebar({ open, setOpen }) {
   const location = useLocation()
   const userType = localStorage.getItem('userType')
+  const selectedRole=localStorage.getItem('selectedRole')
   const isActive = (path) => location.pathname === path
 
   return (
@@ -166,7 +169,9 @@ function Sidebar({ open, setOpen }) {
             /> */}
 
             {/* Role-specific Sidebars */}
-            {userType === 'candidate' && <StudentSidebar activePath={location.pathname} />}
+            {selectedRole === 'student' && <StudentSidebar activePath={location.pathname} />}
+            {selectedRole === 'fresher' && <FresherSidebar activePath={location.pathname} />}
+            {selectedRole === 'professional' && <ProfessionalSidebar activePath={location.pathname} />}
             {userType === 'company' && <CompanySidebar activePath={location.pathname} />}
             {userType === 'college' && <CollegeSidebar activePath={location.pathname} />}
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import HackathonDetail from '@/components/Student/StudentDashboard/Hackathon/HackathonDetail';
 
-const Detail = () => {
+const ProfessionalDetail = () => {
   return (
     <div className='bg-white'>
       <HackathonDetail />
@@ -9,4 +9,4 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+export default ProfessionalDetail;

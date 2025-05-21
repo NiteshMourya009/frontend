@@ -1,6 +1,6 @@
 import PageHeader from "../../components/dashboard/PageHeader"
 
-function JobSearch() {
+function ProfJobSearch() {
   return (
     <div>
       <PageHeader 
@@ -18,4 +18,4 @@ function JobSearch() {
   )
 }
 
-export default JobSearch
+export default ProfJobSearch

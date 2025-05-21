@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import JobListSection from '@/components/Student/StudentDashboard/JobListing/JobListSection';
 import { fetchJobs } from '@/constants/JobListing';
 
-const JobListings = () => {
+const ProfessionalJobListings = () => {
   const [profileJobs, setProfileJobs] = useState([]);
   const [preferenceJobs, setPreferenceJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -72,4 +72,4 @@ const JobListings = () => {
   );
 };
 
-export default JobListings;
+export default ProfessionalJobListings;

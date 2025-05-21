@@ -17,8 +17,8 @@ function ProfessionalSidebar({ activePath }) {
       </SidebarNavGroup>
 
       <SidebarNavGroup label="Service Request" icon={<FiClipboard />} active={activePath.includes('/service-request')}>
-        <SidebarNavItem to="/service-request/post-referral-job" label="Post Referral Job" active={activePath === '/service-request/post-referral-job'} />
-        <SidebarNavItem to="/service-request/manage-referral-jobs" label="Manage Referral Jobs" active={activePath === '/service-request/manage-referral-jobs'} />
+        <SidebarNavItem to="/professional/service-request" label="Post Referral Job" active={activePath === '/professional/service-request'} />
+        <SidebarNavItem to="/professional/service-request/referral" label="Manage Referral Jobs" active={activePath === '/service-request/manage-referral-jobs'} />
       </SidebarNavGroup>
 
       <SidebarNavGroup label="Application Status" icon={<FiClipboard />} active={activePath.includes('/application-status')}>

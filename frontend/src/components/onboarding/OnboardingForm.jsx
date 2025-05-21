@@ -1,7 +1,5 @@
-// First, we'll integrate the RoleContext with the OnboardingForm component
-
-// OnboardingForm.jsx with role-based form selection
-import React, { useState } from "react";
+// OnboardingForm.jsx with enhanced role-based form selection and local storage
+import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { Welcome } from "./FormSteps/Welcome";
 import { StepOne } from "./FormSteps/StepOne";
@@ -12,13 +10,27 @@ import { StepFive } from "./FormSteps/StepFive";
 import { Confirmation } from "./FormSteps/Confirmation";
 import { FresherStepThree } from "./FormSteps/FresherStepThree";
 import { FresherStepFour } from "./FormSteps/FresherStepFour";
-import { useRole } from "../../context/RoleContext/RoleContext.jsx";
-
+import { useRole } from "@/context/RoleContext/RoleContext";
 
 export const OnboardingForm = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [formData, setFormData] = useState({});
-  const { selectedRole, setSelectedRole } = useRole();
+  const [currentStep, setCurrentStep] = useState(() => {
+    // Try to restore step from localStorage if available
+    const savedStep = localStorage.getItem('currentStep');
+    return savedStep ? parseInt(savedStep, 10) : 0;
+  });
+  
+  const { 
+    selectedRole, 
+    setSelectedRole, 
+    formData, 
+    updateFormData, 
+    clearData 
+  } = useRole();
+
+  // Save current step to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('currentStep', currentStep.toString());
+  }, [currentStep]);
 
   const handleNext = () => {
     setCurrentStep((prev) => prev + 1);
@@ -35,8 +47,7 @@ export const OnboardingForm = () => {
       )
     ) {
       setCurrentStep(0);
-      setFormData({});
-      setSelectedRole(null);
+      clearData(); // This will clear selectedRole, formData, and remove them from localStorage
     }
   };
 
@@ -44,12 +55,20 @@ export const OnboardingForm = () => {
     console.log("Form submitted with data:", formData);
     alert("Form submitted successfully!");
     setCurrentStep(0);
-    setFormData({});
-    setSelectedRole(null);
+    clearData(); // This will clear selectedRole, formData, and remove them from localStorage
   };
 
   const handleProfileTypeSelection = (profileType) => {
     setSelectedRole(profileType);
+  };
+
+  const handleFormDataChange = (newData) => {
+    updateFormData(newData);
+  };
+
+  // Helper function to determine if professional forms should be used
+  const shouldUseProfessionalForms = () => {
+    return selectedRole === "fresher" || selectedRole === "professional";
   };
 
   const renderStep = () => {
@@ -57,31 +76,70 @@ export const OnboardingForm = () => {
       case 0:
         return <Welcome onNext={handleNext} onCancel={handleCancel} />;
       case 1:
-        return <StepOne onNext={handleNext} onCancel={handleCancel} />;
+        return <StepOne 
+          onNext={handleNext} 
+          onCancel={handleCancel}
+          formData={formData}
+          onChange={handleFormDataChange} 
+        />;
       case 2:
         return <StepTwo 
           onNext={handleNext} 
-          onCancel={handleBack} 
+          onCancel={handleBack}
           onProfileTypeSelect={handleProfileTypeSelection}
+          formData={formData}
+          onChange={handleFormDataChange}
+          selectedRole={selectedRole}
         />;
       case 3:
-        // Choose between student and fresher form for step 3
-        return selectedRole === "fresher" ? (
-          <FresherStepThree onNext={handleNext} onBack={handleBack} onCancel={handleCancel} />
+        // Choose between student and professional forms for step 3
+        return shouldUseProfessionalForms() ? (
+          <FresherStepThree 
+            onNext={handleNext} 
+            onBack={handleBack} 
+            onCancel={handleCancel}
+            formData={formData}
+            onChange={handleFormDataChange}
+          />
         ) : (
-          <StepThree onNext={handleNext} onBack={handleBack} onCancel={handleCancel} />
+          <StepThree 
+            onNext={handleNext} 
+            onBack={handleBack} 
+            onCancel={handleCancel}
+            formData={formData}
+            onChange={handleFormDataChange}
+          />
         );
       case 4:
-        // Choose between student and fresher form for step 4
-        return selectedRole === "fresher" ? (
-          <FresherStepFour onNext={handleNext} onBack={handleBack} />
+        // Choose between student and professional forms for step 4
+        return shouldUseProfessionalForms() ? (
+          <FresherStepFour 
+            onNext={handleNext} 
+            onBack={handleBack}
+            formData={formData}
+            onChange={handleFormDataChange}
+          />
         ) : (
-          <StepFour onNext={handleNext} onBack={handleBack} />
+          <StepFour 
+            onNext={handleNext} 
+            onBack={handleBack}
+            formData={formData}
+            onChange={handleFormDataChange}
+          />
         );
       case 5:
-        return <StepFive onNext={handleNext} onBack={handleBack} />;
+        return <StepFive 
+          onNext={handleNext} 
+          onBack={handleBack}
+          formData={formData}
+          onChange={handleFormDataChange}
+        />;
       case 6:
-        return <Confirmation onSubmit={handleSubmit} onCancel={handleBack} />;
+        return <Confirmation 
+          onSubmit={handleSubmit} 
+          onCancel={handleBack}
+          formData={formData}
+        />;
       default:
         return <Welcome onNext={handleNext} onCancel={handleCancel} />;
     }

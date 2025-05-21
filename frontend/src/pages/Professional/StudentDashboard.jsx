@@ -1,7 +1,7 @@
 import PageHeader from "@/components/dashboard/PageHeader"
 
 
-function StudentDashboard() {
+function ProfStudentDashboard() {
   return (
     <div>
       <PageHeader 
@@ -19,4 +19,4 @@ function StudentDashboard() {
   )
 }
 
-export default StudentDashboard
+export default ProfStudentDashboard

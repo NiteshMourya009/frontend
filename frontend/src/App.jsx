@@ -165,6 +165,12 @@ import RefPostingPage from "./pages/Professional/ServiceRequest/refpostingpage";
 import PostReferralJobPage from "./pages/Professional/ServiceRequest/postreferral";
 import TotalApplicantsPage from "./pages/Professional/ServiceRequest/TotalApplicantsPage";
 import OffCampusApplicant from "./pages/Professional/ServiceRequest/OffcampusApplicant";
+import ProfDashboard from "./pages/Professional/Dashboard";
+import ProfProfile from "./pages/Professional/Profile";
+import ProfessionalJobListings from "./pages/Professional/Dashboard/JobListing/JobListings";
+import ProfessionalJobDetails from "./pages/Professional/Dashboard/JobListing/JobDetails";
+import ProfessionalHackathon from "./pages/Professional/Dashboard/Hackathon/Hackthon";
+import ProfessionalDetail from "./pages/Professional/Dashboard/Hackathon/Detail";
 
 // Create query client
 const queryClient = new QueryClient();
@@ -265,9 +271,9 @@ function AppRoutes() {
               <Route path="/fresher-dashboard/hackathon" element={<FresherHackathon/>} />
               <Route path="/fresher-dashboard/hackathon/:id" element={<FresherDetail />} />
               {/* service request  */}
-              <Route path ='fresher/service-request/career-craft' element={<Fresher_CareerCraft/>}/>
-              <Route path ='fresher/service-request/mock-interview' element={<Fresher_MockInterview/>}/>
-              <Route path ='fresher/service-request/counselling' element={<Fresher_Counselling/>}/>
+              <Route path ='/fresher/service-request/career-craft' element={<Fresher_CareerCraft/>}/>
+              <Route path ='/fresher/service-request/mock-interview' element={<Fresher_MockInterview/>}/>
+              <Route path ='/fresher/service-request/counselling' element={<Fresher_Counselling/>}/>
               {/* Application status  */}
               {/* <Route path="fresher/application-status/job-listing" element={<JobTracker/>} />
               <Route path="/application-status/off-campus-listing" element={<OffcampusStatus/>} />
@@ -277,6 +283,13 @@ function AppRoutes() {
 
 
               {/* proffesional routes */}
+              <Route path="/home" element={<ProfDashboard/>} />
+              <Route path="/profile" element={<ProfProfile />} />
+              <Route path="/fresher-dashboard/job-listing" element={<ProfessionalJobListings />} />
+              <Route path="/professional-dashboard/job-listing/:jobId" element={<ProfessionalJobDetails />} />
+              <Route path="/professional-dashboard/hackathon" element={<ProfessionalHackathon/>} />
+              <Route path="/professional-dashboard/hackathon/:id" element={<ProfessionalDetail />} />
+
               <Route path ='professional/service-request' element={<RefPostingPage/>}/>
               <Route path ='professional/service-request/post' element={<PostReferralJobPage/>}/>
               <Route path ='professional/service-request/referral' element={<ManageReferralJobs/>}/>

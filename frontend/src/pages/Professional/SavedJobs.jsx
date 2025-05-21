@@ -1,6 +1,6 @@
 import PageHeader from "@/components/dashboard/PageHeader"
 
-function SavedJobs() {
+function ProfSavedJobs() {
   return (
     <div>
       <PageHeader 
@@ -18,4 +18,4 @@ function SavedJobs() {
   )
 }
 
-export default SavedJobs
+export default ProfSavedJobs
