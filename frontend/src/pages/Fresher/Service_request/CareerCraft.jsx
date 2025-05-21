@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-function Fresher_CareerCraft() {
+function FresherCareerCraft() {
     const [features, setFeatures] = useState([
       {
         id: 1,
@@ -91,5 +91,5 @@ function Fresher_CareerCraft() {
     );
   }
   
-  export default Fresher_CareerCraft;
+  export default FresherCareerCraft;
   

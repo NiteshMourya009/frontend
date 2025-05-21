@@ -6,7 +6,7 @@ function ProfessionalSidebar({ activePath }) {
   return (
     <div>
       {/* Professional Sidebar */}
-      <SidebarNavItem to="/dashboard" icon={<FiHome />} label="Home" active={activePath === '/dashboard'} />
+      <SidebarNavItem to="/profhome" icon={<FiHome />} label="Home" active={activePath === '/profhome'} />
       <SidebarNavItem to="/profile" icon={<FiUser />} label="Profile" active={activePath === '/profile'} />
       <SidebarNavItem to="/saved-jobs" icon={<FiBookmark />} label="Saved Jobs/Internships" active={activePath === '/saved-jobs'} />
 
@@ -24,7 +24,7 @@ function ProfessionalSidebar({ activePath }) {
       <SidebarNavGroup label="Application Status" icon={<FiClipboard />} active={activePath.includes('/application-status')}>
         <SidebarNavItem to="/application-status/job-listing" label="Job Listing" active={activePath === '/application-status/job-listing'} />
         <SidebarNavItem to="/application-status/referral-jobs" label="Referral Jobs" active={activePath === '/application-status/referral-jobs'} />
-        <SidebarNavItem to="/application-status/off-campus-jobs" label="Off-Campus Jobs" active={activePath === '/application-status/off-campus-jobs'} />
+        <SidebarNavItem to="/application-status/off-campus-listing" label="Off-Campus Jobs" active={activePath === '/application-status/off-campus-jobs'} />
         <SidebarNavItem to="/application-status/hackathon" label="Hackathon" active={activePath === '/application-status/hackathon'} />
       </SidebarNavGroup>
 

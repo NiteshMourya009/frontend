@@ -147,9 +147,9 @@ import PoolCampusEmployeeDash from "./pages/Company/EmployerDashboard/PoolCampus
 // import ProfessionalJobTracker from "./components/Professional/ApplicationStatus/JobListings/JobTracker";
 // import ProfessionalHackthonStatus from "./components/Professional/ApplicationStatus/Hackthon/HackthonStatus";
 // import ProfAIDrivenJob from "./components/Professional/AIDrivenJobSearch/AIDrivenJob"
-import  Fresher_CareerCraft from "./pages/Fresher/Service_request/CareerCraft";
-import Fresher_MockInterview from "./pages/Fresher/Service_request/Mock_Interview";
-import Fresher_Counselling from "./pages/Fresher/Service_request/Counselling";
+import  FresherCareerCraft from "./pages/Fresher/Service_request/CareerCraft";
+import FresherMockInterview from "./pages/Fresher/Service_request/Mock_Interview";
+import FresherCounselling from "./pages/Fresher/Service_request/Counselling";
 import FresherDashboard from "./pages/Fresher/Dashboard";
 import Fresher_Profile from "./pages/Fresher/Profile";
 import FJobListings from "./pages/Fresher/FresherDashboard/JobListing/JobListings";
@@ -271,9 +271,9 @@ function AppRoutes() {
               <Route path="/fresher-dashboard/hackathon" element={<FresherHackathon/>} />
               <Route path="/fresher-dashboard/hackathon/:id" element={<FresherDetail />} />
               {/* service request  */}
-              <Route path ='/fresher/service-request/career-craft' element={<Fresher_CareerCraft/>}/>
-              <Route path ='/fresher/service-request/mock-interview' element={<Fresher_MockInterview/>}/>
-              <Route path ='/fresher/service-request/counselling' element={<Fresher_Counselling/>}/>
+              <Route path ='/fresher-dashboard/service-request/career-craft' element={<FresherCareerCraft/>}/>
+              <Route path ='/fresher-dashboard/service-request/mock-interview' element={<FresherMockInterview/>}/>
+              <Route path ='/fresher-dashboard/service-request/counselling' element={<FresherCounselling/>}/>
               {/* Application status  */}
               {/* <Route path="fresher/application-status/job-listing" element={<JobTracker/>} />
               <Route path="/application-status/off-campus-listing" element={<OffcampusStatus/>} />
@@ -283,9 +283,9 @@ function AppRoutes() {
 
 
               {/* proffesional routes */}
-              <Route path="/home" element={<ProfDashboard/>} />
+              <Route path="/profhome" element={<ProfDashboard/>} />
               <Route path="/profile" element={<ProfProfile />} />
-              <Route path="/fresher-dashboard/job-listing" element={<ProfessionalJobListings />} />
+              <Route path="/professional-dashboard/job-listing" element={<ProfessionalJobListings />} />
               <Route path="/professional-dashboard/job-listing/:jobId" element={<ProfessionalJobDetails />} />
               <Route path="/professional-dashboard/hackathon" element={<ProfessionalHackathon/>} />
               <Route path="/professional-dashboard/hackathon/:id" element={<ProfessionalDetail />} />

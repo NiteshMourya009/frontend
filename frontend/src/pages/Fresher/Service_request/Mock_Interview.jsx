@@ -2,7 +2,7 @@ import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-function Fresher_MockInterview() {
+function FresherMockInterview() {
   const [features, setFeatures] = useState([
     {
       id: 1,
@@ -296,4 +296,4 @@ function Fresher_MockInterview() {
   );
 }
 
-export default Fresher_MockInterview;
+export default FresherMockInterview;

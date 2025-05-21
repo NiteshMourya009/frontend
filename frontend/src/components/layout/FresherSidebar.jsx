@@ -19,10 +19,10 @@ function FresherSidebar({ activePath }) {
         <SidebarNavItem to="/fresher-dashboard/hackathon" label="Hackathon" active={activePath === '/fresher-dashboard/hackathon'} />
       </SidebarNavGroup>
 
-      <SidebarNavGroup label="Service Request" icon={<FiClipboard />} active={activePath.includes('/fresher/service-request')}>
-        <SidebarNavItem to="/fresher/service-request/counselling" label="Counselling" active={activePath === '/fresher/service-request/counselling'} />
-        <SidebarNavItem to="/fresher/service-request/career-craft" label="Career Craft" active={activePath === '/fresher/service-request/career-craft'} />
-        <SidebarNavItem to="/fresher/service-request/mock-interview" label="Mock Interview" active={activePath === '/fresher/service-request/mock-interview'} />
+      <SidebarNavGroup label="Service Request" icon={<FiClipboard />} active={activePath.includes('/fresher-dashboard/service-request')}>
+        <SidebarNavItem to="/fresher-dashboard/service-request/counselling" label="Counselling" active={activePath === '/fresher-dashboard/service-request/counselling'} />
+        <SidebarNavItem to="/fresher-dashboard/service-request/career-craft" label="Career Craft" active={activePath === '/fresher-dashboard/service-request/career-craft'} />
+        <SidebarNavItem to="/fresher-dashboard/service-request/mock-interview" label="Mock Interview" active={activePath === '/fresher-dashboard/service-request/mock-interview'} />
       </SidebarNavGroup>
 
       <SidebarNavGroup label="Application Status" icon={<FiClipboard />} active={activePath.includes('/application-status')}>
