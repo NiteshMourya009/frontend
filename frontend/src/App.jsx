@@ -146,7 +146,31 @@ import PoolCampusEmployeeDash from "./pages/Company/EmployerDashboard/PoolCampus
 // import ProfessionalOffcampusStatus from "./components/Professional/ApplicationStatus/OffCampusListing/OffcampusStatus";
 // import ProfessionalJobTracker from "./components/Professional/ApplicationStatus/JobListings/JobTracker";
 // import ProfessionalHackthonStatus from "./components/Professional/ApplicationStatus/Hackthon/HackthonStatus";
-// import ProfAIDrivenJob from "./components/Professional/AIDrivenJobSearch/AIDrivenJob";
+// import ProfAIDrivenJob from "./components/Professional/AIDrivenJobSearch/AIDrivenJob"
+import  FresherCareerCraft from "./pages/Fresher/Service_request/CareerCraft";
+import FresherMockInterview from "./pages/Fresher/Service_request/Mock_Interview";
+import FresherCounselling from "./pages/Fresher/Service_request/Counselling";
+import FresherDashboard from "./pages/Fresher/Dashboard";
+import Fresher_Profile from "./pages/Fresher/Profile";
+import FJobListings from "./pages/Fresher/FresherDashboard/JobListing/JobListings";
+import FJobDetails from "./pages/Fresher/FresherDashboard/JobListing/JobDetails";
+import FInternJobListings from "./pages/Fresher/FresherDashboard/InternshipOpportunity/InternJobListing";
+import FInternJobDetails from "./pages/Fresher/FresherDashboard/InternshipOpportunity/InternJobDetails";
+import FOffCampusJobDetail from "./pages/Fresher/FresherDashboard/OffCampusListing/OffCampusJobDetail";
+import FOffCampusJobListings from "./pages/Fresher/FresherDashboard/OffCampusListing/offCampusJobListing";
+import FresherHackathon from "./pages/Fresher/FresherDashboard/Hackathon/Hackthon";
+import FresherDetail from "./pages/Fresher/FresherDashboard/Hackathon/Detail";
+import ManageReferralJobs from "./pages/Professional/ServiceRequest/ManageReferralJobs";
+import RefPostingPage from "./pages/Professional/ServiceRequest/refpostingpage";
+import PostReferralJobPage from "./pages/Professional/ServiceRequest/postreferral";
+import TotalApplicantsPage from "./pages/Professional/ServiceRequest/TotalApplicantsPage";
+import OffCampusApplicant from "./pages/Professional/ServiceRequest/OffcampusApplicant";
+import ProfDashboard from "./pages/Professional/Dashboard";
+import ProfProfile from "./pages/Professional/Profile";
+import ProfessionalJobListings from "./pages/Professional/Dashboard/JobListing/JobListings";
+import ProfessionalJobDetails from "./pages/Professional/Dashboard/JobListing/JobDetails";
+import ProfessionalHackathon from "./pages/Professional/Dashboard/Hackathon/Hackthon";
+import ProfessionalDetail from "./pages/Professional/Dashboard/Hackathon/Detail";
 
 // Create query client
 const queryClient = new QueryClient();
@@ -237,9 +261,50 @@ function AppRoutes() {
               <Route path="settings" element={<Settings />} />
               <Route path="ContactUs" element={<ContactUs/>} />
               <Route path="*" element={<NotFound />} />
+<<<<<<< HEAD
                
               
+=======
+                {/* Fresher */}
+              <Route path="/fresherhome" element={<FresherDashboard />} />
+              <Route path="/fresherprofile" element={<Fresher_Profile />} />
+              <Route path="/fresher-dashboard/job-listing" element={<FJobListings />} />
+              <Route path="/fresher-dashboard/job-listing/:jobId" element={<FJobDetails />} />
+              <Route path="/fresher-dashboard/internship-opportunities" element={<FInternJobListings />} />
+              <Route path="/fresher-dashboard/internship-opportunities/:jobId" element={<FInternJobDetails />} />
+              <Route path="/fresher-dashboard/off-campus-listings" element={<FOffCampusJobListings />} />
+              <Route path="/fresher-dashboard/off-campus-listings/:jobId" element={<FOffCampusJobDetail/>} />
+              <Route path="/fresher-dashboard/hackathon" element={<FresherHackathon/>} />
+              <Route path="/fresher-dashboard/hackathon/:id" element={<FresherDetail />} />
+              {/* service request  */}
+              <Route path ='/fresher-dashboard/service-request/career-craft' element={<FresherCareerCraft/>}/>
+              <Route path ='/fresher-dashboard/service-request/mock-interview' element={<FresherMockInterview/>}/>
+              <Route path ='/fresher-dashboard/service-request/counselling' element={<FresherCounselling/>}/>
+              {/* Application status  */}
+              {/* <Route path="fresher/application-status/job-listing" element={<JobTracker/>} />
+              <Route path="/application-status/off-campus-listing" element={<OffcampusStatus/>} />
+              <Route path="/application-status/internship-opportunities" element={<InternshipStatus/>} />
+              <Route path="/application-status/referral-jobs" element={<RefferralJobStatus/>} />
+              <Route path="/application-status/hackathon" element={<HackthonStatus/>} /> */}
 
+>>>>>>> 2bd04dcdcb9792d8a90ec847e7c97405133e7a56
+
+              {/* proffesional routes */}
+              <Route path="/profhome" element={<ProfDashboard/>} />
+              <Route path="/profprofile" element={<ProfProfile />} />
+              <Route path="/professional-dashboard/job-listing" element={<ProfessionalJobListings />} />
+              <Route path="/professional-dashboard/job-listing/:jobId" element={<ProfessionalJobDetails />} />
+              <Route path="/professional-dashboard/hackathon" element={<ProfessionalHackathon/>} />
+              <Route path="/professional-dashboard/hackathon/:id" element={<ProfessionalDetail />} />
+
+              <Route path ='professional/service-request' element={<RefPostingPage/>}/>
+              <Route path ='professional/service-request/post' element={<PostReferralJobPage/>}/>
+              <Route path ='professional/service-request/referral' element={<ManageReferralJobs/>}/>
+              <Route path ='professional/service-request/totalapplicants' element={<TotalApplicantsPage/>}/>
+              <Route path ='professional/service-request/applicant' element={<OffCampusApplicant/>}/>
+              
+              
+              
               {/* Company  */}
               <Route path="home" element={<Dashboard />} />
               <Route path="/company-profile" element={<CompanyProfile />}/> 
