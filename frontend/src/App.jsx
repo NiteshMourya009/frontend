@@ -208,6 +208,8 @@ function AppRoutes() {
         element={
           <Layout>
             <Routes>
+
+              {/* student */}
               <Route path="/home" element={<Dashboard />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/student-dashboard/job-listing" element={<JobListings />} />
@@ -235,7 +237,8 @@ function AppRoutes() {
               <Route path="settings" element={<Settings />} />
               <Route path="ContactUs" element={<ContactUs/>} />
               <Route path="*" element={<NotFound />} />
-
+               
+              
 
               {/* Company  */}
               <Route path="home" element={<Dashboard />} />
@@ -351,15 +354,8 @@ function AppRoutes() {
                 </ApplicationProvider>
               } />
 
-
-
-
-
-
-
               {/* Professional  */}
              
-
             </Routes>
           </Layout>
         }

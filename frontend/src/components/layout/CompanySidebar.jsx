@@ -51,9 +51,7 @@ function CompanySidebar({ activePath }) {
 
       <SidebarNavItem to="/chats" icon={<FiClipboard />} label="Chats" active={activePath === '/chats'} />
       <SidebarNavItem to="/interviews" icon={<FiClipboard />} label="Interviews" active={activePath === '/interviews'} />
-      <SidebarNavItem to="/reports" icon={<FiClipboard />} label="Reports" active={activePath === '/reports'} />
-
-     
+      <SidebarNavItem to="/reports" icon={<FiClipboard />} label="Reports" active={activePath === '/reports'} />     
     </div>
   );
 }
