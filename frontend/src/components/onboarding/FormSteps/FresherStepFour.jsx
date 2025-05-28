@@ -18,6 +18,28 @@ export const FresherStepFour = ({ onNext, onBack }) => {
     description: "",
   });
 
+  const [dropdownOpen, setDropdownOpen] = useState({
+    industryType: false,
+    jobRoles: false,
+    locations: false,
+  });
+
+  const toggleDropdown = (field) => {
+    setDropdownOpen((prev) => ({
+      ...prev,
+      [field]: !prev[field],
+    }));
+  };
+
+  const handleSelect = (field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: prev[field].includes(value)
+        ? prev[field].filter((v) => v !== value)
+        : [...prev[field], value],
+    }));
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -28,11 +50,42 @@ export const FresherStepFour = ({ onNext, onBack }) => {
   };
 
   const handleAddExperience = () => {
-    // Function placeholder for adding experience
     console.log("Add experience clicked");
-    // You would typically add a new experience entry to the form data
-    // For a complete implementation, you would need to add state for multiple experiences
   };
+
+  const renderCustomDropdown = (field, options, label) => (
+    <div className="w-full mt-6 max-md:max-w-full">
+      <label className="block text-black max-md:max-w-full">{label}</label>
+      <div className="relative mt-2">
+        <div
+          className="flex justify-between items-center min-h-12 w-full p-3 border border-gray-300 rounded cursor-pointer text-[#666]"
+          onClick={() => toggleDropdown(field)}
+        >
+          <span>
+            {formData[field].length > 0
+              ? formData[field].join(", ")
+              : `Select ${label.toLowerCase()}`}
+          </span>
+          <ChevronDownIcon className="w-6 h-6" />
+        </div>
+        {dropdownOpen[field] && (
+          <ul className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded shadow-md max-h-60 overflow-y-auto">
+            {options.map((option) => (
+              <li
+                key={option}
+                onClick={() => handleSelect(field, option)}
+                className={`p-2 hover:bg-gray-100 cursor-pointer ${
+                  formData[field].includes(option) ? "bg-gray-200" : ""
+                }`}
+              >
+                {option.charAt(0).toUpperCase() + option.slice(1)}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
 
   return (
     <div className="justify-center items-stretch bg-white z-0 flex min-w-60 flex-col w-[560px] my-auto p-12 max-md:max-w-full max-md:px-5">
@@ -50,94 +103,34 @@ export const FresherStepFour = ({ onNext, onBack }) => {
         </div>
 
         <form className="w-full text-base font-normal mt-8 max-md:max-w-full">
-          <div className="w-full max-md:max-w-full">
-            <label
-              htmlFor="industryType"
-              className="block text-black max-md:max-w-full"
-            >
-              Interested Industry Type
-            </label>
-            <div className="relative">
-              <select
-                id="industryType"
-                name="industryType"
-                multiple
-                className="items-center appearance-none flex min-h-12 w-full gap-2 text-[#666] whitespace-nowrap mt-2 p-3 max-md:max-w-full border border-gray-300 rounded"
-              >
-                <option value="" disabled>
-                  Multiple-select
-                </option>
-                <option value="technology">Technology</option>
-                <option value="finance">Finance</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="education">Education</option>
-                <option value="manufacturing">Manufacturing</option>
-              </select>
-              <ChevronDownIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 pointer-events-none" />
-            </div>
-          </div>
+          {renderCustomDropdown("industryType", [
+            "technology",
+            "finance",
+            "healthcare",
+            "education",
+            "manufacturing",
+          ], "Interested Industry Type")}
 
-          <div className="w-full mt-6 max-md:max-w-full">
-            <label
-              htmlFor="jobRoles"
-              className="block text-black max-md:max-w-full"
-            >
-              Interested Job Roles
-            </label>
-            <div className="relative">
-              <select
-                id="jobRoles"
-                name="jobRoles"
-                multiple
-                className="items-center appearance-none flex min-h-12 w-full gap-2 text-[#666] whitespace-nowrap mt-2 p-3 max-md:max-w-full border border-gray-300 rounded"
-              >
-                <option value="" disabled>
-                  Multiple-select
-                </option>
-                <option value="developer">Software Developer</option>
-                <option value="designer">UI/UX Designer</option>
-                <option value="manager">Project Manager</option>
-                <option value="analyst">Data Analyst</option>
-                <option value="marketing">Marketing Specialist</option>
-              </select>
-              <ChevronDownIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 pointer-events-none" />
-            </div>
-          </div>
+          {renderCustomDropdown("jobRoles", [
+            "developer",
+            "designer",
+            "manager",
+            "analyst",
+            "marketing",
+          ], "Interested Job Roles")}
 
-          <div className="w-full mt-6 max-md:max-w-full">
-            <label
-              htmlFor="locations"
-              className="block text-black max-md:max-w-full"
-            >
-              Preferred Job Locations
-            </label>
-            <div className="relative">
-              <select
-                id="locations"
-                name="locations"
-                multiple
-                className="items-center appearance-none flex min-h-12 w-full gap-2 text-[#666] whitespace-nowrap mt-2 p-3 max-md:max-w-full border border-gray-300 rounded"
-              >
-                <option value="" disabled>
-                  Multiple-select
-                </option>
-                <option value="bangalore">Bangalore</option>
-                <option value="mumbai">Mumbai</option>
-                <option value="delhi">Delhi</option>
-                <option value="hyderabad">Hyderabad</option>
-                <option value="pune">Pune</option>
-                <option value="remote">Remote</option>
-              </select>
-              <ChevronDownIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 pointer-events-none" />
-            </div>
-          </div>
+          {renderCustomDropdown("locations", [
+            "bangalore",
+            "mumbai",
+            "delhi",
+            "hyderabad",
+            "pune",
+            "remote",
+          ], "Preferred Job Locations")}
 
           {/* Expected Salary */}
           <div className="w-full mt-6 max-md:max-w-full">
-            <label
-              htmlFor="expectedSalary"
-              className="block text-black max-md:max-w-full"
-            >
+            <label htmlFor="expectedSalary" className="block text-black">
               Expected Salary
             </label>
             <div className="flex items-center gap-2 mt-2">
@@ -169,90 +162,49 @@ export const FresherStepFour = ({ onNext, onBack }) => {
             </div>
           </div>
 
+          {/* Looking for */}
           <div className="w-full mt-6 max-md:max-w-full">
-            <label className="block text-black max-md:max-w-full">
-              Looking for
-            </label>
-            <div className="flex w-full gap-4 text-black whitespace-nowrap flex-wrap mt-2 max-md:max-w-full">
-              <button
-                type="button"
-                className={`self-stretch gap-2 px-4 py-2 border rounded-md ${
-                  formData.lookingFor === "job" ? "bg-black text-white" : ""
-                }`}
-                onClick={() => handleRadioChange("lookingFor", "job")}
-              >
-                Job
-              </button>
-              <button
-                type="button"
-                className={`self-stretch gap-2 px-4 py-2 border rounded-md ${
-                  formData.lookingFor === "internship"
-                    ? "bg-black text-white"
-                    : ""
-                }`}
-                onClick={() => handleRadioChange("lookingFor", "internship")}
-              >
-                Internship
-              </button>
-              <button
-                type="button"
-                className={`self-stretch gap-2 px-4 py-2 border rounded-md ${
-                  formData.lookingFor === "both" ? "bg-black text-white" : ""
-                }`}
-                onClick={() => handleRadioChange("lookingFor", "both")}
-              >
-                Both
-              </button>
+            <label className="block text-black">Looking for</label>
+            <div className="flex w-full gap-4 text-black whitespace-nowrap flex-wrap mt-2">
+              {["job", "internship", "both"].map((option) => (
+                <button
+                  key={option}
+                  type="button"
+                  className={`self-stretch gap-2 px-4 py-2 border rounded-md ${
+                    formData.lookingFor === option ? "bg-black text-white" : ""
+                  }`}
+                  onClick={() => handleRadioChange("lookingFor", option)}
+                >
+                  {option.charAt(0).toUpperCase() + option.slice(1)}
+                </button>
+              ))}
             </div>
           </div>
 
+          {/* Employment type */}
           <div className="w-full mt-6 max-md:max-w-full">
-            <label className="block text-black max-md:max-w-full">
-              Employment type
-            </label>
-            <div className="flex w-full gap-4 text-black whitespace-nowrap flex-wrap mt-2 max-md:max-w-full">
-              <button
-                type="button"
-                className={`self-stretch gap-2 px-4 py-2 border rounded-md ${
-                  formData.employmentType === "part-time"
-                    ? "bg-black text-white"
-                    : ""
-                }`}
-                onClick={() => handleRadioChange("employmentType", "part-time")}
-              >
-                Part-time
-              </button>
-              <button
-                type="button"
-                className={`self-stretch gap-2 px-4 py-2 border rounded-md ${
-                  formData.employmentType === "full-time"
-                    ? "bg-black text-white"
-                    : ""
-                }`}
-                onClick={() => handleRadioChange("employmentType", "full-time")}
-              >
-                Full-time
-              </button>
-              <button
-                type="button"
-                className={`self-stretch gap-2 px-4 py-2 border rounded-md ${
-                  formData.employmentType === "contract"
-                    ? "bg-black text-white"
-                    : ""
-                }`}
-                onClick={() => handleRadioChange("employmentType", "contract")}
-              >
-                Contract
-              </button>
+            <label className="block text-black">Employment type</label>
+            <div className="flex w-full gap-4 text-black whitespace-nowrap flex-wrap mt-2">
+              {["part-time", "full-time", "contract"].map((option) => (
+                <button
+                  key={option}
+                  type="button"
+                  className={`self-stretch gap-2 px-4 py-2 border rounded-md ${
+                    formData.employmentType === option
+                      ? "bg-black text-white"
+                      : ""
+                  }`}
+                  onClick={() => handleRadioChange("employmentType", option)}
+                >
+                  {option.replace("-", " ")}
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Internships/Trainings section */}
+          {/* Internships/Trainings */}
           <div className="w-full mt-6 max-md:max-w-full">
-            <label
-              htmlFor="internshipCompany"
-              className="block text-black max-md:max-w-full"
-            >
+            <label htmlFor="internshipCompany" className="block text-black">
               Internships/Trainings
             </label>
             <div className="relative">
@@ -263,7 +215,7 @@ export const FresherStepFour = ({ onNext, onBack }) => {
                 onChange={handleChange}
                 className="items-center appearance-none flex min-h-12 w-full gap-2 text-[#666] whitespace-nowrap mt-2 p-3 border border-gray-300 rounded"
               >
-                <option value="" disabled selected>
+                <option value="" disabled>
                   Select Company
                 </option>
                 <option value="company1">Company 1</option>
@@ -276,10 +228,7 @@ export const FresherStepFour = ({ onNext, onBack }) => {
 
           {/* Job Role */}
           <div className="w-full mt-6 max-md:max-w-full">
-            <label
-              htmlFor="jobRole"
-              className="block text-black max-md:max-w-full"
-            >
+            <label htmlFor="jobRole" className="block text-black">
               Job Role
             </label>
             <div className="relative">
@@ -290,7 +239,7 @@ export const FresherStepFour = ({ onNext, onBack }) => {
                 onChange={handleChange}
                 className="items-center appearance-none flex min-h-12 w-full gap-2 text-[#666] whitespace-nowrap mt-2 p-3 border border-gray-300 rounded"
               >
-                <option value="" disabled selected>
+                <option value="" disabled>
                   Placeholder
                 </option>
                 <option value="developer">Software Developer</option>
@@ -304,59 +253,38 @@ export const FresherStepFour = ({ onNext, onBack }) => {
 
           {/* Date Range */}
           <div className="flex w-full gap-6 mt-6 max-md:max-w-full">
-            <div className="whitespace-nowrap flex-1 shrink basis-[0%]">
-              <label htmlFor="startDate" className="block text-black">
-                Start Date
-              </label>
-              <div className="relative">
-                <select
-                  id="startDate"
-                  name="startDate"
-                  value={formData.startDate}
-                  onChange={handleChange}
-                  className="items-center appearance-none bg-white flex min-h-12 w-full gap-2 text-[#666] mt-2 p-3 border border-gray-300 rounded"
-                >
-                  <option value="" disabled selected>
-                    Placeholder
-                  </option>
-                  <option value="jan2025">Jan 2025</option>
-                  <option value="feb2025">Feb 2025</option>
-                  <option value="mar2025">Mar 2025</option>
-                </select>
-                <ChevronDownIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 pointer-events-none" />
+            {["startDate", "endDate"].map((field, idx) => (
+              <div key={field} className="flex-1">
+                <label htmlFor={field} className="block text-black">
+                  {field === "startDate" ? "Start Date" : "End Date"}
+                </label>
+                <div className="relative">
+                  <select
+                    id={field}
+                    name={field}
+                    value={formData[field]}
+                    onChange={handleChange}
+                    className="items-center appearance-none bg-white flex min-h-12 w-full gap-2 text-[#666] mt-2 p-3 border border-gray-300 rounded"
+                  >
+                    <option value="" disabled>
+                      Placeholder
+                    </option>
+                    <option value="jan2025">Jan 2025</option>
+                    <option value="feb2025">Feb 2025</option>
+                    <option value="mar2025">Mar 2025</option>
+                    <option value="jan2026">Jan 2026</option>
+                    <option value="feb2026">Feb 2026</option>
+                    <option value="mar2026">Mar 2026</option>
+                  </select>
+                  <ChevronDownIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 pointer-events-none" />
+                </div>
               </div>
-            </div>
-
-            <div className="flex-1 shrink basis-[0%]">
-              <label htmlFor="endDate" className="block text-black">
-                End Date
-              </label>
-              <div className="relative">
-                <select
-                  id="endDate"
-                  name="endDate"
-                  value={formData.endDate}
-                  onChange={handleChange}
-                  className="items-center appearance-none bg-white flex min-h-12 w-full gap-2 text-[#666] whitespace-nowrap mt-2 p-3 border border-gray-300 rounded"
-                >
-                  <option value="" disabled selected>
-                    Placeholder
-                  </option>
-                  <option value="jan2026">Jan 2026</option>
-                  <option value="feb2026">Feb 2026</option>
-                  <option value="mar2026">Mar 2026</option>
-                </select>
-                <ChevronDownIcon className="absolute right-3 top-1/2 transform -translate-y-1/2 w-6 h-6 pointer-events-none" />
-              </div>
-            </div>
+            ))}
           </div>
 
           {/* Description */}
           <div className="w-full mt-6 max-md:max-w-full">
-            <label
-              htmlFor="description"
-              className="block text-black max-md:max-w-full"
-            >
+            <label htmlFor="description" className="block text-black">
               Description
             </label>
             <textarea
@@ -369,7 +297,7 @@ export const FresherStepFour = ({ onNext, onBack }) => {
             ></textarea>
           </div>
 
-          {/* Add Experience Button */}
+          {/* Add Experience */}
           <div className="flex justify-end mt-4">
             <button
               type="button"

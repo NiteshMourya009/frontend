@@ -15,6 +15,8 @@ function LoginPage() {
       [e.target.name]: e.target.value
     });
   };
+// change after when backend will getting integrate 
+// this user type take from the db
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,11 +24,11 @@ function LoginPage() {
     const userType = localStorage.getItem('userType');
 
     if (userType === 'candidate') {
-      navigate('/home');
+      navigate('/student-home');
     } else if (userType === 'company') {
-      navigate('/home');
+      navigate('/company-home');
     } else if (userType === 'college') {
-      navigate('/home');
+      navigate('/college-home');
     }
 
     console.log('Form submitted:', formData);
