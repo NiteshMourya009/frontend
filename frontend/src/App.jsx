@@ -137,16 +137,7 @@ import PostJob from "./pages/Company/HiringChannels/PostJob/CreateJob";
 import OnCampusHiring from "./pages/Company/HiringChannels/OnCampusHiring/OnCampusHiring";
 import PoolEmployeeListing from "./pages/Company/EmployerDashboard/PoolCampus/PoolEmployeeListing";
 import PoolCampusEmployeeDash from "./pages/Company/EmployerDashboard/PoolCampus/PoolCampusEmployerDash";
-// import ProfessionalJobDetails from "./pages/Professional/ProfessionalDashboard/JobListing/JobDetails";
-// import ProfessionalJobListings from "./pages/Professional/ProfessionalDashboard/JobListing/JobListings";
-// import ProfessionalHackathon from "./pages/Professional/ProfessionalDashboard/Hackathon/Hackthon";
-// import ProfessionalDetail from "./pages/Professional/ProfessionalDashboard/Hackathon/Detail";
-// import JobRoutesProfessional from "./components/Professional/SavedJob/JobRoutes";
-// import ProfRefferralJobStatus from "./components/Professional/ApplicationStatus/ReferralJobs/RefferralJobStatus";
-// import ProfessionalOffcampusStatus from "./components/Professional/ApplicationStatus/OffCampusListing/OffcampusStatus";
-// import ProfessionalJobTracker from "./components/Professional/ApplicationStatus/JobListings/JobTracker";
-// import ProfessionalHackthonStatus from "./components/Professional/ApplicationStatus/Hackthon/HackthonStatus";
-// import ProfAIDrivenJob from "./components/Professional/AIDrivenJobSearch/AIDrivenJob"
+
 import  FresherCareerCraft from "./pages/Fresher/Service_request/CareerCraft";
 import FresherMockInterview from "./pages/Fresher/Service_request/Mock_Interview";
 import FresherCounselling from "./pages/Fresher/Service_request/Counselling";

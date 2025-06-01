@@ -8,6 +8,7 @@ import StudentSidebar from './StudentSidebar' // You can create a similar one fo
 import Logo from '../ui/Logo'
 import FresherSidebar from './FresherSidebar'
 import ProfessionalSidebar from './ProfessionalSidebar'
+import EmployerSidebar from './EmployerSidebar'
 
 function Sidebar({ open, setOpen }) {
   const location = useLocation()
@@ -40,6 +41,7 @@ function Sidebar({ open, setOpen }) {
             {selectedRole === 'student' && <StudentSidebar activePath={location.pathname} />}
             {selectedRole === 'fresher' && <FresherSidebar activePath={location.pathname} />}
             {selectedRole === 'professional' && <ProfessionalSidebar activePath={location.pathname} />}
+            {selectedRole === 'employer' && <EmployerSidebar activePath={location.pathname} />}
             {userType === 'company' && <CompanySidebar activePath={location.pathname} />}
             {userType === 'college' && <CollegeSidebar activePath={location.pathname} />}
             
